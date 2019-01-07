@@ -6,5 +6,6 @@ export function Card(id = 0, value = 0, flipped = "unflipped"){
 }
 
 Card.prototype.isMatch = function(cardTwo) {
-  memory(this.id, cardTwo.id);
+  
+  return memory(this.value, cardTwo.value);
 };

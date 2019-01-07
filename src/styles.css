@@ -1,0 +1,19 @@
+body {
+  background-color: darkgreen;
+  font-size: 25px;
+}
+
+.just-flipped {
+  color: red;
+  background-color: #fffeea;
+}
+
+.unflipped {
+  color: black;
+  background-color: #fffeea;
+}
+
+.flipped {
+  color: lightgreen;
+  background-color: #fffeea;
+}
