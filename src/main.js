@@ -4,31 +4,33 @@ import './styles.css';
 
 $(document).ready(function() {
   $("form").submit(function(event) {
-    debugger;
     event.preventDefault();
-    console.log('button clicked');
-    var colors = generateColors(16);
-    debugger;
-    var table = makeTable(4, 4, colors);
-    debugger;
-    $("#game").append(table);
+    var width = 8;
+    var height = 6;
+    var colors = generateColors(width*height);
+    var table = makeTable(width, height, colors);
+    $("#game").html(table);
+    clickCard();
   });
 
-
-  $(".unflipped").click(function(event) {
-    event.preventDefault();
-    var justFlippedFoundId = $('.just-flipped').attr('id');
-    if (justFlippedFoundId > 0) {
+  function clickCard(){
+    $(".unflipped").on("click", function(event) {
+      event.preventDefault();
+      var justFlippedFoundId = $(this).attr('id');
+      var justFlippedFoundColor = $(this).attr('value');
+      console.log(justFlippedFoundColor);
+      if (justFlippedFoundId > 0) {
         $('.just-flipped').attr('id');
-    }
-    $(this).attr('class', 'just-flipped');
+      }
+      $(this).attr('class', 'just-flipped');
+      var hot = [];
+      $(this).css('background-color', justFlippedFoundColor);
+      $('.just-flipped').each(function() {
+        hot.push(new Card($(this).attr('id'), $(this).attr('value')));
+      });
+      flip(hot);
 
-    var hot = [];
-    $('.just-flipped').each(function() {
-      hot.push(new Card($(this).attr('id'), $(this).attr('value')));
     });
-    flip(hot);
 
-  });
-
+  }
 });

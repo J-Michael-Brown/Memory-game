@@ -2,11 +2,18 @@ export function flip(hot) {
   if (hot.length > 1) {
     if (hot[0].isMatch(hot[1])) {
       $('.just-flipped').addClass('flipped');
+      $('#' + hot[0].id.toString() ).css('background-color', hot[0].value);
+      $('#' + hot[1].id.toString() ).css('background-color', hot[1].value);
       $('.just-flipped').removeClass('just-flipped');
     } else {
       // add a couple of seconds
-      $('.just-flipped').addClass('unflipped');
-      $('.just-flipped').removeClass('just-flipped');
+      setTimeout(function() {
+        $('.just-flipped').addClass('unflipped');
+        // hot[0].css('background-color', hot[0].value);
+        $('#' + hot[0].id.toString() ).css('background-color', 'black');
+        $('#' + hot[1].id.toString() ).css('background-color', 'black');
+        $('.just-flipped').removeClass('just-flipped');
+      }, 500);
     }
   }
 }
@@ -59,7 +66,7 @@ export function makeTable(length, height, colors) {
   for (var h=0; h<height; h++) {
     htmlCode = htmlCode + "\t<tr>\n";
     for (var l=0; l<length; l++) {
-      htmlCode = htmlCode + '\t\t<td id="cell-'+ totalCells++ + '" value="' + colors[colorsIndex] + '" class="unflipped"></td> \n';
+      htmlCode = htmlCode + '\t\t<td><div id="cell-'+ totalCells++ + '" value="' + colors[colorsIndex] + '" class="unflipped"><p>hey</p></div></td>\n';
       colorsIndex++;
     }
     htmlCode = htmlCode + "\t</tr>\n";

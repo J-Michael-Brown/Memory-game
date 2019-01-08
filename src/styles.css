@@ -5,15 +5,25 @@ body {
 
 .just-flipped {
   color: red;
-  background-color: #fffeea;
+  background-color: blue;
 }
 
 .unflipped {
-  color: black;
-  background-color: #fffeea;
+  color: red;
+  background-color: black;
 }
 
 .flipped {
   color: lightgreen;
-  background-color: #fffeea;
+  background-color: gray;
+}
+
+td {
+  width: 100px;
+  height: 200px;
+}
+
+td div {
+  height: 100%;
+  width: 100%;
 }
